@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix-clone</title>
+    <link rel="icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png">
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: black;
+            position: relative;
+        }
+        svg{
+            z-index: +999;
+            position: absolute;
+            height: 148px;
+            /* width: 331px; */
+            padding: 0 32px;
+            margin-top: -24px;
+        }
+        .container{
+            background-color: rgb(0, 0, 0);
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 16px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        a:hover{
+            text-decoration: underline;
+        }
+
+        img{
+            height: 100%;
+            width: 100%;
+        }
+        
+        .box{
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            height: 700px;
+            width: 450px;
+            padding: 48px 68px;
+            top: 90px;
+        }
+
+        .upper p{
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        form .input-group{
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        form input{
+            padding:16px;
+            width: 100%;
+            border: 0.2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
+            background: #161616B3;
+            line-height: 1.5;
+            color: #ffffff;
+            font-size: 16px;
+        }
+        form label {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            pointer-events: none;
+            transition: 0.2s ease all;
+        }
+        form input:focus + label,
+        form input:not(:placeholder-shown) + label {
+            top: 5px;
+            font-size: 13px;
+            color: #ffffff;
+            position: absolute;
+        }
+
+        button{
+            width: 100%;
+            margin-bottom: 16px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: none;
+            color:rgb(255, 255, 255);
+            height: 40px;
+        }
+
+        button:hover{
+            opacity: 0.8;
+        }
+
+        .sign-in{
+            background-color: rgb(229, 9, 20);
+        }
+
+        .use{
+            background-color: rgba(128, 128, 128, 0.4);
+        }
+        
+        .upper a{
+            color: #ffffff;
+        }
+
+        .bottom{
+            justify-content: left ;
+            margin: 20px 0 0;
+        }
+
+        .bottom p{
+            margin: 16px 0;
+        }
+
+        footer{
+            padding: 150px 100px;
+            text-decoration: none;
+        }
+        .footer-contact{
+            color: grey;
+            font-size: 20px;
+        }
+        .footer-links{
+            width: 100%;
+            display: flex;
+            flex-grow: 1;
+            /* justify-content: space-between; */
+            padding: 40px 0px 40px 0px;
+            flex-wrap: wrap;
+        }
+        
+        select{
+            height: 40px;
+            width: 100px;
+            padding-left: 10px;
+            border-radius: 3px;
+            color: white;
+            background-color: rgb(49, 48, 48);
+            border: none;
+        }
+        .linked{
+            color: grey;
+        }
+        .space{
+            margin: 10px 0px;
+        }
+
+        @media screen and (max-width:600px) {
+            .container img{
+                display: none;
+            }
+            .box{
+                width: 100%;
+                padding: 30px;
+            }
+            footer{
+                border-top:0.8px solid rgba(128, 128, 128, 0.7);
+                padding: 30px;
+            }
+
+            .footer-contact, .linked{
+                color: #FFFFFFB3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg viewBox="0 -109.31 300 300" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g fill="#e50914"> <path d="M256.09 76.212c4.178.405 8.354.84 12.52 1.29l9.198-22.712 8.743 24.807c4.486.562 8.97 1.152 13.44 1.768l-15.328-43.501L299.996 0H287.01l-.135.186-8.283 20.455L271.32.003h-12.822l13.237 37.565-15.644 38.644zM246.393 75.322V0h-12.817v74.265c4.275.33 8.552.684 12.817 1.056M150.113 71.11c3.46 0 6.916.026 10.366.054V43.492h15.397V31.708H160.48v-19.91h17.733V0h-30.6v71.12c.831 0 1.666-.013 2.5-.01M110.319 71.83c4.27-.152 8.544-.28 12.824-.384V11.8h11.98V.003H98.339V11.8h11.982v60.03h-.002zM12.295 79.772V34.897L27.471 77.96c4.667-.524 9.341-1.017 14.028-1.483V.001H29.201v46.483L12.825.001H0v81.384h.077c4.063-.562 8.14-1.096 12.218-1.613M85.98 11.797V.001H55.377V75.202a1100.584 1100.584 0 0 1 30.578-2.211V61.184c-5.916.344-11.82.74-17.71 1.181V43.497h15.397V31.706H68.245V11.797H85.98zM203.614 60.62V-.003h-12.873v71.876c10.24.376 20.44.9 30.606 1.56V61.619c-5.9-.381-11.81-.712-17.733-1"></path> </g> </g></svg>
+
+    <div class="container">
+        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/826348c2-cdcb-42a0-bc11-a788478ba5a2/6d20b198-e7ab-4e9f-a1aa-666faa0298f9/IN-en-20240729-POP_SIGNUP_TWO_WEEKS-perspective_WEB_a67d8c9e-8121-4a74-98e4-8005eb2df227_medium.jpg" style="opacity: 0.5;" alt="">
+        <!-- header -->
+        <!-- <header>
+            <div class="logo">
+                
+            </div>
+        </header> -->
+
+        <!-- form -->
+            <div class="box">
+                <div class="upper">
+                    <h1 style="color: rgb(255, 255, 255); font-weight: 700; margin-bottom: 28px;">Sign In</h1>
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" id="email" placeholder=" ">
+                            <label for="email">Email or mobile number</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="password" placeholder=" ">
+                            <label for="password">Password</label>
+                        </div>
+                        <button class="sign-in">Sign In</button>
+                        <p style="color: rgba(255, 255, 255, 0.7);">OR</p>
+                        <button class="use">Use a sign-in code</button>
+                        <br>
+                        <p style="text-align: center;"><a href="">Forgot password?</a></p>
+                    </form>
+                </div>
+                <div class="bottom">
+                    <input type="checkbox" name="" id="">
+                    <label for="checkbox" >Remember me</label>
+                    <p style="color: rgb(140, 140, 140);">New to Netflix? <a href="" style="color: rgb(255, 255, 255); font-weight: 500;">Sign up now.</a></p>
+                    <p style="font-size: 13px; color: rgb(140, 140, 140);">This page is protected by Google reCAPTCHA to ensure you're not a bot. <a href="" style="color: #0071EB;">Learn more.</a></p>
+                </div>
+            </div>
+    </div>
+    <footer>
+        <div class="footer-contact">Questions? Call 000-800-919-1694</div>
+        <div class="footer-links">
+            <div class="space"><a href="#" class="linked" style="text-decoration: underline; padding-right: 250px;">FAQ</a></div>
+            <div class="space"><a href="#" class="linked" style="text-decoration: underline; padding-right: 250px;">Help Centre</a></div>
+            <div class="space"><a href="#" class="linked" style="text-decoration: underline; padding-right: 250px;">Terms of Use</a></div>
+            <div class="space"><a href="#" class="linked" style="text-decoration: underline; padding-right: 250px;">Privacy</a></div>
+            <div class="space"><a href="#" class="linked" style="text-decoration: underline; padding-right: 145px;">Cookie Preferences</a></div>
+            <div class="space"><a href="#" class="linked" style="text-decoration: underline; padding-right: 250px;">Corporate Information</a></div>
+        </div>
+        <div class="language-select">
+            <select>
+                <option>English</option>
+                <option>हिन्दी</option>
+            </select>
+        </div>
+    </footer>
+</body>
+</html>
